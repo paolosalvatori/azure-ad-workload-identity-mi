@@ -5,11 +5,6 @@
 # Variables
 source ./00-variables.sh
 
-# Install todolist application
-cat $workloadDeploymentTemplate |
-    yq "(.spec.template.spec.serviceAccountName)|="\""$workloadServiceAccountName"\"
-exit
-
 # Create the namespace if it doesn't already exists in the cluster
 result=$(kubectl get namespace -o jsonpath="{.items[?(@.metadata.name=='$workloadNamespace')].metadata.name}")
 
